@@ -29,6 +29,9 @@ RUN apk add --no-cache \
         wget \
         xz \
 		yarn
+		
+# upgrade grep to gnu grep
+RUN apk add --no-cache --upgrade grep
 
 # https://github.com/upx/upx
 ARG UPX_VERSION=4.0.2
