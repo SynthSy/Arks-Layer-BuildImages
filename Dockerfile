@@ -3,6 +3,8 @@ FROM docker.io/alpine:$ALPINE_VERSION AS build
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
+        aspell \
+		aspell-en \
         alpine-sdk \
         autoconf \
         automake \
@@ -15,8 +17,10 @@ RUN apk add --no-cache \
         gettext \
         gettext-dev \
         gperf \
+		git \
         jq \
 		nodejs \
+		parallel \
 		python3 \
 		py3-pip \
         rsync \
