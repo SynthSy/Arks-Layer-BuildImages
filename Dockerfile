@@ -2,7 +2,7 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 # base image
-FROM cimg/python:3.11-node as debian
+FROM cimg/python:3.11-node AS debian
 COPY --from=xx / /
 RUN apt-get update && apt-get upgrade --no-install-recommends -y
 
