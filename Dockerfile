@@ -23,6 +23,7 @@ RUN apk add --no-cache \
 		parallel \
 		python3 \
 		py3-pip \
+		py3-virtualenv \
         rsync \
 		openssh \
         texinfo \
