@@ -45,14 +45,14 @@ apk --no-cache add \
 	py3-pip \
 	py3-virtualenv \
 	xz
-	
+
 xx-apk --no-cache --no-scripts add \
     musl-dev \
     gcc \
     g++ \
 	zlib-dev \
 	cmark-dev
-	
+
 log "Downloading mono-dev package..."
 mkdir -P /tmp/mono-dev
 mkdir -P /tmp/mono-install
