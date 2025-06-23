@@ -1,3 +1,13 @@
+FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
+ARG MONO_URL=https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz
+
+# compile mono-dev
+FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
+COPY --from=xx / /
+COPY src/build /build
+ARG TARGETPLATFORM
+RUN /build/build.sh "MONO_URL"
+
 ARG ALPINE_VERSION=3.19
 FROM docker.io/alpine:$ALPINE_VERSION AS build
 
@@ -21,7 +31,6 @@ RUN apk add --no-cache \
 		git \
         jq \
 		libgdiplus-dev \
-		mono-dev \
 		nodejs \
 		parallel \
 		pkgconf \
@@ -47,5 +56,7 @@ RUN set -xeu; \
     chmod +x upx; \
     mv upx /usr/local/bin/upx; \
     rm -f upx.tar.xz
+	
+COPY --from=mono-dev /tmp/mono-install/usr/bin /usr/bin
 	
 ENTRYPOINT ["/bin/bash"]
