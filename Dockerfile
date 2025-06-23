@@ -4,9 +4,12 @@ ARG MONO_URL=https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.
 # compile mono-dev
 FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
 COPY --from=xx / /
-COPY src/build /build
 ARG TARGETPLATFORM
+ARG MONO_URL
+COPY src/build /build
 RUN /build/build.sh "$MONO_URL"
+RUN xx-verify \
+    /tmp/mono-install/usr/bin/mono
 
 FROM docker.io/alpine:3.19 AS build
 
