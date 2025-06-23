@@ -56,7 +56,7 @@ xx-apk --no-cache --no-scripts add \
 log "Downloading mono-dev package..."
 mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
-curl -# -L -f ${MONO_URL} | tar xJ --strip 2 -C /tmp/mono-dev
+curl -# -L -f ${MONO_URL} | tar -xzf --strip 2 -C /tmp/mono-dev
 
 log "Compiling..."
 cd /tmp/mono-dev && make check -j$(nproc)
