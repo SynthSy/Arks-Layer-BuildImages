@@ -8,8 +8,7 @@ COPY src/build /build
 ARG TARGETPLATFORM
 RUN /build/build.sh "MONO_URL"
 
-ARG ALPINE_VERSION=3.19
-FROM docker.io/alpine:$ALPINE_VERSION AS build
+FROM docker.io/alpine:3.19 AS build
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
