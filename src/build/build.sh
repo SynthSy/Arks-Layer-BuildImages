@@ -37,12 +37,12 @@ apk --no-cache add \
     coreutils \
     curl \
     patch \
-    py3-pip \
     clang \
     binutils \
     ruby-rake \
     pkgconf \
 	python3 \
+	py3-pip \
 	py3-virtualenv \
 	xz
 	
