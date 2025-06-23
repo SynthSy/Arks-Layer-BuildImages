@@ -29,6 +29,7 @@ apk --no-cache add \
     patch \
 	git \
 	openssh \
+	icu-libs \
     clang \
     binutils \
     ruby-rake \
