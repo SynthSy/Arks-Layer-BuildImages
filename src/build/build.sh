@@ -59,7 +59,7 @@ mkdir /tmp/mono-install
 curl -# -L -f ${MONO_URL} | tar xJ --strip 2 -C /tmp/mono-dev
 
 log "Compiling..."
-make V=${VERBOSE_BUILD:-0} -f /tmp/mono-dev/makefile -j$(nproc)
+cd /tmp/mono-dev && make check -j$(nproc)
 
 log "display directory for debugging purposes..."
 ls -l /tmp/mono-dev
