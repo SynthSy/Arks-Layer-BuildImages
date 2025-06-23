@@ -48,20 +48,12 @@ xx-apk --no-cache --no-scripts add \
 	zlib-dev \
 	cmark-dev
 
-mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
-curl -#Lo mono.tar.xz \
-    "https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz"; \
-    tar -xJf mono.tar.xz --strip-components=1 -C /tmp/mono-dev
-#(	
-#    cd /tmp && \
-#    git clone https://github.com/dotnet/fsharp.git && \
-#	cd fsharp && ./build.sh
-#)
 
-(
-    cd /tmp/mono-dev && \
-	./configure && \
+(	
+    cd /tmp && \
+    git clone https://gitlab.winehq.org/mono/mono.git && \
+	cd mono && \
 	make check -j$(nproc)
 )
 
