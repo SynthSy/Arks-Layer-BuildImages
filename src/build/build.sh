@@ -58,9 +58,6 @@ mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
 curl -# -L -f ${MONO_URL} | tar xJ --strip 2 -C /tmp/mono-dev
 
-log "Patching mono-dev..."
-patch -p1 -d /tmp/mono-dev < "$SCRIPT_DIR"/s390x-musl.patch
-
 log "Compiling..."
 rake V=${VERBOSE_BUILD:-0} -f /tmp/mono-dev/Rakefile -j$(nproc)
 
