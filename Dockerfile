@@ -6,7 +6,7 @@ COPY --from=xx / /
 ARG TARGETPLATFORM
 ARG MONO_URL
 COPY src/build /build
-RUN chmod +x /build/build.sh && /build/build.sh
+RUN sudo /build/build.sh
 RUN xx-verify \
     /tmp/mono-install/usr/bin/mono
 
