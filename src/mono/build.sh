@@ -23,6 +23,7 @@ apk --no-cache add \
     automake \
     bash \
     bind-tools \
+	gettext \
     bison \
     coreutils \
     curl \
@@ -46,7 +47,8 @@ xx-apk --no-cache --no-scripts add \
     gcc \
     g++ \
 	zlib-dev \
-	cmark-dev
+	cmark-dev \
+	libtool
 
 mkdir /tmp/mono-install
 
@@ -54,6 +56,7 @@ mkdir /tmp/mono-install
     cd /tmp && \
     git clone https://gitlab.winehq.org/mono/mono.git && \
 	cd mono && \
+	./autogen.sh && \
 	make check -j$(nproc)
 )
 
