@@ -20,7 +20,7 @@ function log {
     echo ">>> $*"
 }
 
-MONO_URL="$1"
+MONO_URL="https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz"
 
 if [ -z "$MONO_URL" ]; then
     log "ERROR: Mono URL missing."
