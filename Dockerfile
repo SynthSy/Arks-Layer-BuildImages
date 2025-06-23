@@ -1,11 +1,11 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
+# compile f-sharp &
 # compile mono-dev
 FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
 COPY --from=xx / /
 ARG TARGETPLATFORM
-ARG MONO_URL
-COPY src/build/ /build
+COPY src/mono/ /build
 RUN chmod +x /build/build.sh
 RUN sh /build/build.sh
 RUN xx-verify \
