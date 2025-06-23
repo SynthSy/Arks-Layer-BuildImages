@@ -1,4 +1,4 @@
-#FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
+FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS debian
 COPY --from=xx / /
