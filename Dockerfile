@@ -4,23 +4,24 @@ FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS debian
 COPY --from=xx / /
 ARG TARGETPLATFORM
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends gnupg \
-	bash \
+    && apt-get install -y --no-install-recommends bash \
 	build-essential \
-	cmake \
-	dirmngr \
 	ca-certificates \
-	openssh-client \
-	git \
-	mono-devel \
 	ca-certificates-mono \
-	wget \
-	unzip \
-	zip \
+	cmake \
+	curl \
+	dirmngr \
+	git \
+	gnupg \
+	mono-devel \
+	openssh-client \
 	parallel \
 	python3.11 \
 	python3-venv \
-	python3-pip
+	python3-pip \
+	unzip \
+	wget \
+	zip
 
 # https://github.com/upx/upx
 ARG UPX_VERSION=4.0.2
