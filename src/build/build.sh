@@ -43,18 +43,18 @@ xx-apk --no-cache --no-scripts add \
 	zlib-dev \
 	cmark-dev
 
-
 mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
 curl -#Lo mono.tar.xz \
     "https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz"; \
     tar -xJf mono.tar.xz --strip-components=1 -C /tmp/mono-dev
 
-
-cd /tmp/mono-dev && make check -j$(nproc)
-
+(
+    cd /tmp/mono-dev && \
+	./configure && \
+	make check -j$(nproc)
+)
 
 ls -l /tmp/mono-dev
-
 
 DESTDIR=/tmp/mono-install make -f /tmp/mono-dev/makefile install
