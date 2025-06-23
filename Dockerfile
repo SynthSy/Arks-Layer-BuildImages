@@ -5,8 +5,9 @@ FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
 COPY --from=xx / /
 ARG TARGETPLATFORM
 ARG MONO_URL
-COPY src/build /build
-RUN sh /build/build.sh
+COPY src/build/ /build
+RUN chmod +x /build/build.sh
+RUN /build/build.sh
 RUN xx-verify \
     /tmp/mono-install/usr/bin/mono
 
