@@ -12,6 +12,7 @@ RUN apk add --no-cache \
         bind-tools \
         bison \
         coreutils \
+		ca-certificates \
         file \
         findutils \
         gettext \
@@ -19,8 +20,11 @@ RUN apk add --no-cache \
         gperf \
 		git \
         jq \
+		libgdiplus-dev \
+		mono-dev \
 		nodejs \
 		parallel \
+		pkgconf \
 		python3 \
 		py3-pip \
 		py3-virtualenv \
