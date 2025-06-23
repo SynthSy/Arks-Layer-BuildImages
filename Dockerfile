@@ -7,7 +7,7 @@ COPY --from=xx / /
 ARG TARGETPLATFORM
 ARG MONO_URL
 COPY src/build /build
-RUN /build/build.sh "$MONO_URL"
+RUN chmod +x /build/build.sh && /build/build.sh "$MONO_URL"
 RUN xx-verify \
     /tmp/mono-install/usr/bin/mono
 
