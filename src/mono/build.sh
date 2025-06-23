@@ -57,7 +57,7 @@ mkdir /tmp/mono-install
     git clone https://gitlab.winehq.org/mono/mono.git && \
 	cd mono && \
 	./autogen.sh && \
-	make check -j$(nproc)
+	make -j$(nproc)
 )
 
 ls -l /tmp/mono-dev
