@@ -1,15 +1,15 @@
-FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
+#FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 # compile f-sharp &
 # compile mono-dev
-FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
-COPY --from=xx / /
-ARG TARGETPLATFORM
-COPY src/mono/ /build
-RUN chmod +x /build/build.sh
-RUN sh /build/build.sh
-RUN xx-verify \
-    /tmp/mono-install/usr/bin/mono
+#FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
+#COPY --from=xx / /
+#ARG TARGETPLATFORM
+#COPY src/mono/ /build
+#RUN chmod +x /build/build.sh
+#RUN sh /build/build.sh
+#RUN xx-verify \
+#    /tmp/mono-install/usr/bin/mono
 
 FROM docker.io/alpine:3.19 AS build
 
@@ -59,6 +59,6 @@ RUN set -xeu; \
     mv upx /usr/local/bin/upx; \
     rm -f upx.tar.xz
 	
-COPY --from=mono-dev /tmp/mono-install/usr/bin /usr/bin
+#COPY --from=mono-dev /tmp/mono-install/usr/bin /usr/bin
 	
 ENTRYPOINT ["/bin/bash"]
