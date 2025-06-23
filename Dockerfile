@@ -1,53 +1,27 @@
 #FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
-# compile f-sharp &
-# compile mono-dev
-#FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
-#COPY --from=xx / /
-#ARG TARGETPLATFORM
-#COPY src/mono/ /build
-#RUN chmod +x /build/build.sh
-#RUN sh /build/build.sh
-#RUN xx-verify \
-#    /tmp/mono-install/usr/bin/mono
-
-FROM docker.io/alpine:3.19 AS build
-
-# hadolint ignore=DL3018
-RUN apk add --no-cache \
-        aspell \
-		aspell-en \
-        alpine-sdk \
-        autoconf \
-        automake \
-        bash \
-        bind-tools \
-        bison \
-        coreutils \
-		ca-certificates \
-        file \
-        findutils \
-        gettext \
-        gettext-dev \
-        gperf \
-		git \
-        jq \
-		libgdiplus-dev \
-		nodejs \
-		parallel \
-		pkgconf \
-		python3 \
-		py3-pip \
-		py3-virtualenv \
-        rsync \
-		openssh \
-        texinfo \
-        wget \
-        xz \
-		yarn
-		
-# upgrade grep to gnu grep
-RUN apk add --no-cache --upgrade grep
+FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS debian
+COPY --from=xx / /
+ARG TARGETPLATFORM
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gnupg \
+	bash \
+	build-essential \
+	cmake \
+	dirmngr \
+	ca-certificates \
+	openssh \
+	openssh-client \
+	git \
+	mono-devel \
+	ca-certificates-mono \
+	wget \
+	unzip \
+	zip \
+	parallel \
+	python3.11 \
+	python3-venv \
+	python3-pip
 
 # https://github.com/upx/upx
 ARG UPX_VERSION=4.0.2
@@ -58,7 +32,5 @@ RUN set -xeu; \
     chmod +x upx; \
     mv upx /usr/local/bin/upx; \
     rm -f upx.tar.xz
-	
-#COPY --from=mono-dev /tmp/mono-install/usr/bin /usr/bin
 	
 ENTRYPOINT ["/bin/bash"]
