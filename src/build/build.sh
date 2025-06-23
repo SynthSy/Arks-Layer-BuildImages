@@ -61,5 +61,8 @@ curl -# -L -f ${MONO_URL} | tar xJ --strip 2 -C /tmp/mono-dev
 log "Compiling..."
 rake V=${VERBOSE_BUILD:-0} -f /tmp/mono-dev/Rakefile -j$(nproc)
 
+log "display directory for debugging purposes..."
+ls -l /tmp/mono-dev
+
 log "Installing..."
 DESTDIR=/tmp/mono-install rake -f /tmp/mono-dev/Rakefile install
