@@ -3,7 +3,7 @@ FROM docker.io/alpine:3.19 AS build
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
         aspell \
-		aspell-en \
+	aspell-en \
         alpine-sdk \
         autoconf \
         automake \
@@ -11,27 +11,27 @@ RUN apk add --no-cache \
         bind-tools \
         bison \
         coreutils \
-		ca-certificates \
+	ca-certificates \
         file \
         findutils \
         gettext \
         gettext-dev \
         gperf \
-		git \
+	git \
         jq \
-		libgdiplus-dev \
-		nodejs \
-		parallel \
-		pkgconf \
-		python3 \
-		py3-pip \
-		py3-virtualenv \
+	libgdiplus-dev \
+	nodejs \
+	parallel \
+	pkgconf \
+	python3 \
+	py3-pip \
+	py3-virtualenv \
         rsync \
-		openssh \
+	openssh \
         texinfo \
         wget \
         xz \
-		yarn
+	yarn
 		
 # upgrade grep to gnu grep
 RUN apk add --no-cache --upgrade grep
