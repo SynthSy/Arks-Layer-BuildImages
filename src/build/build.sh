@@ -20,13 +20,6 @@ function log {
     echo ">>> $*"
 }
 
-MONO_URL="https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz"
-
-if [ -z "$MONO_URL" ]; then
-    log "ERROR: Mono URL missing."
-    exit 1
-fi
-
 apk --no-cache add \
     alpine-sdk \
     autoconf \
@@ -57,8 +50,7 @@ xx-apk --no-cache --no-scripts add \
 log "Downloading mono-dev package..."
 mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
-mkdir /tmp/files
-wget -P /tmp/files -q ${MONO_URL} | cd /tmp/files && tar -xzf mono-6.12.0.199.tar.xz --strip 2 -C /tmp/mono-dev
+curl -#Lo mono.tar.xz "https://download.mono-project.com/sources/mono/mono-6.12.0.199.tar.xz"; | tar -xzf mono.tar.xz --strip-components=1 /tmp/mono-dev
 
 log "Compiling..."
 cd /tmp/mono-dev && make check -j$(nproc)
