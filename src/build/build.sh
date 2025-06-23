@@ -54,8 +54,8 @@ xx-apk --no-cache --no-scripts add \
 	cmark-dev
 
 log "Downloading mono-dev package..."
-mkdir -P /tmp/mono-dev
-mkdir -P /tmp/mono-install
+mkdir /tmp/mono-dev
+mkdir /tmp/mono-install
 curl -# -L -f ${MONO_URL} | tar xJ --strip 2 -C /tmp/mono-dev
 
 log "Patching mono-dev..."
