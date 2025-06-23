@@ -57,7 +57,8 @@ xx-apk --no-cache --no-scripts add \
 log "Downloading mono-dev package..."
 mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
-wget -q ${MONO_URL} | tar -xzf --strip 2 -C /tmp/mono-dev
+mkdir /tmp/files
+wget -P /tmp/files -q ${MONO_URL} | cd /tmp/files && tar -xzf mono-6.12.0.199.tar.xz --strip 2 -C /tmp/mono-dev
 
 log "Compiling..."
 cd /tmp/mono-dev && make check -j$(nproc)
