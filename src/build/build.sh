@@ -44,6 +44,7 @@ apk --no-cache add \
 	python3 \
 	py3-pip \
 	py3-virtualenv \
+	wget \
 	xz
 
 xx-apk --no-cache --no-scripts add \
@@ -56,7 +57,7 @@ xx-apk --no-cache --no-scripts add \
 log "Downloading mono-dev package..."
 mkdir /tmp/mono-dev
 mkdir /tmp/mono-install
-curl -# -L -f ${MONO_URL} | tar -xzf --strip 2 -C /tmp/mono-dev
+wget -q ${MONO_URL} | tar -xzf --strip 2 -C /tmp/mono-dev
 
 log "Compiling..."
 cd /tmp/mono-dev && make check -j$(nproc)
