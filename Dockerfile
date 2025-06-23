@@ -6,7 +6,7 @@ FROM --platform=$BUILDPLATFORM alpine:3.19 AS mono-dev
 COPY --from=xx / /
 COPY src/build /build
 ARG TARGETPLATFORM
-RUN /build/build.sh "MONO_URL"
+RUN /build/build.sh "$MONO_URL"
 
 FROM docker.io/alpine:3.19 AS build
 
