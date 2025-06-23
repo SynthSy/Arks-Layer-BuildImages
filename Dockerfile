@@ -33,6 +33,12 @@ RUN apk add --no-cache \
 # upgrade grep to gnu grep
 RUN apk add --no-cache --upgrade grep
 
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
+
+RUN pip install --upgrade pip && \
+    pip install pipenv wheel pillow && \
+	pip install --user pipx
+
 # https://github.com/upx/upx
 ARG UPX_VERSION=4.0.2
 RUN set -xeu; \
