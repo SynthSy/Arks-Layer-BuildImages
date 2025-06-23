@@ -25,6 +25,7 @@ apk --no-cache add \
     bison \
     coreutils \
     curl \
+	cmake \
     patch \
     clang \
     binutils \
