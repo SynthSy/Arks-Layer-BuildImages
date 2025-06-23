@@ -10,7 +10,6 @@ RUN apt-get update \
 	cmake \
 	dirmngr \
 	ca-certificates \
-	openssh \
 	openssh-client \
 	git \
 	mono-devel \
