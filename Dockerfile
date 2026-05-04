@@ -15,6 +15,7 @@ RUN apt-get update \
 	gnupg \
 	mono-devel \
 	openssh-client \
+	rsync \
 	parallel \
 	unzip \
 	wget \
