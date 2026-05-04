@@ -1,6 +1,6 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
-FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS debian
+FROM --platform=$BUILDPLATFORM debian:trixie-slim AS debian
 COPY --from=xx / /
 ARG TARGETPLATFORM
 RUN apt-get update \
@@ -16,12 +16,13 @@ RUN apt-get update \
 	mono-devel \
 	openssh-client \
 	parallel \
-	python3.11 \
-	python3-venv \
-	python3-pip \
 	unzip \
 	wget \
 	zip
+
+ADD https://astral.sh/uv/0.11.8/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:$PATH"
 
 # https://github.com/upx/upx
 ARG UPX_VERSION=4.0.2
