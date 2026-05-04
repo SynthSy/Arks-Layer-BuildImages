@@ -25,7 +25,7 @@ RUN sh /uv-installer.sh && rm /uv-installer.sh
 ENV PATH="/root/.local/bin/:$PATH"
 
 # https://github.com/upx/upx
-ARG UPX_VERSION=4.0.2
+ARG UPX_VERSION=5.1.1
 RUN set -xeu; \
     curl -#Lo upx.tar.xz \
         "https://github.com/upx/upx/releases/download/v$UPX_VERSION/upx-$UPX_VERSION-amd64_linux.tar.xz"; \
