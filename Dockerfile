@@ -3,7 +3,7 @@ FROM docker.io/alpine:3.23 AS build
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
         aspell \
-	aspell-en \
+        aspell-en \
         alpine-sdk \
         autoconf \
         automake \
@@ -11,24 +11,24 @@ RUN apk add --no-cache \
         bind-tools \
         bison \
         coreutils \
-	ca-certificates \
+        ca-certificates \
         file \
         findutils \
         gettext \
         gettext-dev \
         gperf \
-	git \
+        git \
         jq \
-	libgdiplus-dev \
-	nodejs \
-	parallel \
-	pkgconf \
+        libgdiplus-dev \
+        nodejs \
+        parallel \
+        pkgconf \
         rsync \
-	openssh \
+        openssh \
         texinfo \
         wget \
         xz \
-	yarn
+        yarn
 		
 # upgrade grep to gnu grep
 RUN apk add --no-cache --upgrade grep
@@ -44,7 +44,7 @@ RUN uv python install 3.11
 ARG UPX_VERSION=5.1.1
 RUN set -xeu; \
     curl -#Lo upx.tar.xz \
-        "https://github.com/upx/upx/releases/download/v$UPX_VERSION/upx-$UPX_VERSION-amd64_linux.tar.xz"; \
+        "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz"; \
     tar -xvf upx.tar.xz --strip-components=1 "upx-$UPX_VERSION-amd64_linux/upx"; \
     chmod +x upx; \
     mv upx /usr/local/bin/upx; \
