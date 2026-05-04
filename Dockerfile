@@ -25,6 +25,8 @@ ADD https://astral.sh/uv/0.11.8/install.sh /uv-installer.sh
 RUN sh /uv-installer.sh && rm /uv-installer.sh
 ENV PATH="/root/.local/bin/:$PATH"
 
+RUN uv python install 3.11
+
 # https://github.com/upx/upx
 ARG UPX_VERSION=5.1.1
 RUN set -xeu; \
