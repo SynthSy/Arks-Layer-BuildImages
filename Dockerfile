@@ -11,6 +11,7 @@ RUN apk add --no-cache \
         bind-tools \
         bison \
         coreutils \
+        curl \
         ca-certificates \
         file \
         findutils \
