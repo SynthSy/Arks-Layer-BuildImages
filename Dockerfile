@@ -21,14 +21,14 @@ RUN apt-get update \
 	wget \
 	zip
 
-ADD https://astral.sh/uv/0.11.8/install.sh /uv-installer.sh
+ADD https://astral.sh/uv/0.13.5/install.sh /uv-installer.sh
 RUN sh /uv-installer.sh && rm /uv-installer.sh
 ENV PATH="/root/.local/bin/:$PATH"
 
 RUN uv python install 3.11
 
 # https://github.com/upx/upx
-ARG UPX_VERSION=5.1.1
+ARG UPX_VERSION=5.2.1
 RUN set -xeu; \
     curl -#Lo upx.tar.xz \
         "https://github.com/upx/upx/releases/download/v$UPX_VERSION/upx-$UPX_VERSION-amd64_linux.tar.xz"; \
