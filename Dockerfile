@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.23 AS build
+FROM docker.io/alpine:3.24 AS build
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
@@ -35,14 +35,14 @@ RUN apk add --no-cache \
 RUN apk add --no-cache --upgrade grep
 
 # Install UV and python 3.11
-ADD https://astral.sh/uv/0.11.8/install.sh /uv-installer.sh
+ADD https://astral.sh/uv/0.13.5/install.sh /uv-installer.sh
 RUN sh /uv-installer.sh && rm /uv-installer.sh
 ENV PATH="/root/.local/bin/:$PATH"
 
 RUN uv python install 3.11
 
 # https://github.com/upx/upx
-ARG UPX_VERSION=5.1.1
+ARG UPX_VERSION=5.2.1
 RUN set -xeu; \
     curl -#Lo upx.tar.xz \
         "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz"; \
