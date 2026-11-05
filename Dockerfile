@@ -25,7 +25,6 @@ RUN apk add --no-cache \
         parallel \
         pkgconf \
         rsync \
-        openssh \
         texinfo \
         wget \
         xz \
